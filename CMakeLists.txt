@@ -37,6 +37,8 @@ source_group(${platformDir_} FILES ${platformHeaders_} ${platformSources_})
 
 # create the lib
 add_library(UnitTest++ STATIC ${headers_} ${sources_} ${platformHeaders_} ${platformSources_})
+set_property(TARGET UnitTest++ PROPERTY CXX_STANDARD 11)
+set_property(TARGET UnitTest++ PROPERTY CXX_STANDARD_REQUIRED On)
 
 if(${UTPP_USE_PLUS_SIGN})
 	set_target_properties(UnitTest++ PROPERTIES OUTPUT_NAME UnitTest++)
@@ -54,6 +56,9 @@ if(${UTPP_USE_PLUS_SIGN})
 endif()
 
 target_link_libraries(TestUnitTest++ UnitTest++)
+
+set_property(TARGET TestUnitTest++ PROPERTY CXX_STANDARD 11)
+set_property(TARGET TestUnitTest++ PROPERTY CXX_STANDARD_REQUIRED On)
 
 # run unit tests as post build step
 add_custom_command(TARGET TestUnitTest++
